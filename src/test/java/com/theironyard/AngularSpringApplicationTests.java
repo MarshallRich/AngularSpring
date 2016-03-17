@@ -36,7 +36,7 @@ public class AngularSpringApplicationTests {
 	}
 
 	@Test
-	public void assUser() throws Exception {
+	public void addUser() throws Exception {
 		User user = new User();
 		user.setUsername("Alice");
 		user.setAddress("17 Princess St");
@@ -54,4 +54,12 @@ public class AngularSpringApplicationTests {
 		Assert.assertTrue(users.count() == 1);
 	}
 
+	@Test
+	public void deleteUser() throws Exception {
+		mockMvc.perform(
+				MockMvcRequestBuilders.delete("/user/1")
+		);
+
+		Assert.assertTrue(users.count() == 0);
+	}
 }
